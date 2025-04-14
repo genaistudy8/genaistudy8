@@ -236,8 +236,8 @@ def interaction_page():
                 st.markdown("""
                     <div class="float_message" style="
                         position: fixed;
-                        top: 50%;
-                        left: 60%;
+                        top: 43%;
+                        left: 57%;
                         padding: 5px 10px;
                         color: #243686;
                         font-weight: 700;
