@@ -9,26 +9,6 @@ def read_hallucinations():
     random.shuffle(questions)
     return questions
 
-def select_random_condition():
-    conditions = {0: 13 * ["None"],
-                  1: 4 * ["60%"] + 5 * ["80%"] + 4 * ["100%"],
-                  2: 1 * ["60%"] + 11 * ["80%"] + 1 * ["100%"],
-                  3: 4 * ["40%"] + 5 * ["60%"] + 4 * ["80%"],
-                  4: 1 * ["40%"] + 11 * ["60%"] + 1 * ["80%"],
-                  5: 4 * ["quite"] + 5 * ["highly"] + 4 * ["extremely"],
-                  6: 1 * ["quite"] + 11 * ["highly"] + 1 * ["extremely"],
-                  7: 4 * ["fairly"] + 5 * ["quite"] + 4 * ["highly"],
-                  8: 1 * ["fairly"] + 11 * ["quite"] + 1 * ["highly"],
-                  }
-    idx = st.session_state.confidence_condition
-
-    condition = conditions[idx]
-    random.shuffle(condition)
-    
-    if idx > 0:
-        return [f"Confidence: I am {c} confident" for c in condition], idx
-    else:
-        return condition, idx
 
 def interaction_intro():
     st.write("""
@@ -53,15 +33,6 @@ def interaction_intro():
         </style>
     """, unsafe_allow_html=True)
 
-def type_effect(text, container, speed=0.03):
-    """Helper function to create typing effect"""
-    placeholder = container.empty()
-    displayed_text = ""
-    for char in text:
-        displayed_text += char
-        placeholder.markdown(displayed_text)
-        time.sleep(speed)
-    return displayed_text
 
 def interaction_page():
     # Initialize session state variables for interaction box, responses, and AI thinking state
@@ -160,29 +131,6 @@ def interaction_page():
         </style>
     """, unsafe_allow_html=True)
     
-    # Left column: Question list with auto-paste feature
-    with col1:
-        Instructions = st.container(border=False, key="intro")
-        Instructions.write("### Instructions")
-        Instructions.markdown(f"""
-        **1. Choose a question from the list below, then click submit.**  
-        **2. The question will appear in the chat box.**  
-        **3. Click the arrow button to see the chatbot's response.**  
-        **<If you want to change your question, you can select a new one from the list and then click the arrow.>**  
-        """)
-        
-        st .write("### Question List")
-        container = st.container(height=600, border=False, key="q_list")
-        selected_question = container.radio(
-            "Click a question:",
-            options=st.session_state.questions,
-            index=None,
-            label_visibility="collapsed"
-        )
-
-        # Add submit button for the selected question
-        if selected_question and st.session_state.ai_thinking == 0:
-            st.session_state.interaction_box = selected_question  # Only paste when submit is clicked
 
     # Right column: Chat window and interaction box
     with col2:
@@ -359,6 +307,30 @@ def interaction_page():
                 st.session_state.h_responses.append(ai_message)
                 st.session_state.ai_thinking = 0  # Reset AI thinking state
                 st.rerun()
+                
+    # Left column: Question list with auto-paste feature
+    with col1:
+        Instructions = st.container(border=False, key="intro")
+        Instructions.write("### Instructions")
+        Instructions.markdown(f"""
+        **1. Choose a question from the list below, then click submit.**  
+        **2. The question will appear in the chat box.**  
+        **3. Click the arrow button to see the chatbot's response.**  
+        **<If you want to change your question, you can select a new one from the list and then click the arrow.>**  
+        """)
+        
+        st .write("### Question List")
+        container = st.container(height=600, border=False, key="q_list")
+        selected_question = container.radio(
+            "Click a question:",
+            options=st.session_state.questions,
+            index=None,
+            label_visibility="collapsed"
+        )
+
+        # Add submit button for the selected question
+        if selected_question and st.session_state.ai_thinking == 0:
+            st.session_state.interaction_box = selected_question  # Only paste when submit is clicked
 
     # After conversation, collect user feedback
     with col2:
@@ -605,3 +577,34 @@ def interaction_page():
         st.markdown("""
             <span style="padding: 0 40px; color: #FF2B2B; font-weight: 600;">Your task: """ + str(len(st.session_state.confidence)) + """/13 questions remaining.</span>
         """, unsafe_allow_html=True)
+
+def select_random_condition():
+    conditions = {0: 13 * ["None"],
+                  1: 4 * ["60%"] + 5 * ["80%"] + 4 * ["100%"],
+                  2: 1 * ["60%"] + 11 * ["80%"] + 1 * ["100%"],
+                  3: 4 * ["40%"] + 5 * ["60%"] + 4 * ["80%"],
+                  4: 1 * ["40%"] + 11 * ["60%"] + 1 * ["80%"],
+                  5: 4 * ["quite"] + 5 * ["highly"] + 4 * ["extremely"],
+                  6: 1 * ["quite"] + 11 * ["highly"] + 1 * ["extremely"],
+                  7: 4 * ["fairly"] + 5 * ["quite"] + 4 * ["highly"],
+                  8: 1 * ["fairly"] + 11 * ["quite"] + 1 * ["highly"],
+                  }
+    idx = st.session_state.confidence_condition
+
+    condition = conditions[idx]
+    random.shuffle(condition)
+    
+    if idx > 0:
+        return [f"Confidence: I am {c} confident" for c in condition], idx
+    else:
+        return condition, idx
+
+def type_effect(text, container, speed=0.03):
+    """Helper function to create typing effect"""
+    placeholder = container.empty()
+    displayed_text = ""
+    for char in text:
+        displayed_text += char
+        placeholder.markdown(displayed_text)
+        time.sleep(speed)
+    return displayed_text
