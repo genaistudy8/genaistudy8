@@ -109,8 +109,8 @@ def interaction_page():
                 height: 100%;
             }
             .st-key-intro {
-                width: 40vw;
-                min-width: 615px;
+                /* width: 100%;
+                min-width: 615px; */
                 background: #0068c9;
                 padding: 5px 10px 5px;
                 border-radius: 10px;
@@ -131,14 +131,6 @@ def interaction_page():
             }
         </style>
     """, unsafe_allow_html=True)
-    Instructions = st.container(height=200, border=False, key="intro")
-    Instructions.write("### Instructions")
-    Instructions.markdown(f"""
-    **1. Choose a question from the list below, then click submit.**  
-    **2. The question will appear in the chat box.**  
-    **3. Click the arrow button to see the chatbot's response.**  
-    **<If you want to change your question, you can select a new one from the list and then click the arrow.>**  
-    """)
 
     # Layout with two columns
     col1, col2 = st.columns([1, 1.2])
@@ -170,6 +162,15 @@ def interaction_page():
     
     # Left column: Question list with auto-paste feature
     with col1:
+        Instructions = st.container(border=False, key="intro")
+        Instructions.write("### Instructions")
+        Instructions.markdown(f"""
+        **1. Choose a question from the list below, then click submit.**  
+        **2. The question will appear in the chat box.**  
+        **3. Click the arrow button to see the chatbot's response.**  
+        **<If you want to change your question, you can select a new one from the list and then click the arrow.>**  
+        """)
+        
         st .write("### Question List")
         container = st.container(height=600, border=False, key="q_list")
         selected_question = container.radio(
@@ -191,7 +192,7 @@ def interaction_page():
         st.markdown("""
             <style>
                 div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > .st-key-chat_box) {
-                    height: calc(100vh - 440px);
+                    height: calc(100vh - 280px);
                 }
                 div:has(> .st-key-chat_box) {
                     height: 100%;
