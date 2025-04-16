@@ -42,17 +42,17 @@ def survey_page_1():
 
     for i, (qkey, question) in enumerate(questions.items()):
         #if qkey == "6":
-            st.write(f"> **{qkey}. {question}**")
-            response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
+            #st.write(f"> **{qkey}. {question}**")
+            #response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
 
         #elif qkey == "7":
-            if response.get(questions["6"]) == "No":
-                st.write(f"> **{qkey}. {question}**")
-                response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
-            else:
-                response[question] = "N/A"  # Automatically store "N/A" if Q6 is "Yes"
+            #if response.get(questions["6"]) == "No":
+                #st.write(f"> **{qkey}. {question}**")
+                #response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
+            #else:
+                #response[question] = "N/A"  # Automatically store "N/A" if Q6 is "Yes"
 
-        elif qkey in select_responses.keys():
+        if qkey in select_responses.keys():
             st.write(f"> **{qkey}. {question}**")
             response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
 
