@@ -26,6 +26,8 @@ def survey_page_1():
         "3": "What is your racial/ethnic category? (You can choose the closest one)",
         "4": "What is the highest degree or level of school you have completed? If currently enrolled, pick the highest degree you have received.",
         "5": "Currently, what is your total annual household income before taxes?",
+        "6": "Are you a native English speaker?",
+        "7": "How will you rate your English proficiency on a 5-point scale?"
     }
 
     response = {}
@@ -35,10 +37,22 @@ def survey_page_1():
                  "3": ["American Indian or Alaskan Native", "Asian", "Black or African American", "Hispanic or Latinx", "White or Caucasian", "Other", "Prefer not to answer"],
                  "4": ["No schooling completed", "High school graduate, diploma or the equivalent (for example: GED)", "Bachelor's degree", "Master's degree", "Doctorate degree", "Other", "Prefer not to answer"],
                  "5": ['\$0 ~ $15,000', "\$15,001 ~ $25,000", "\$25,001 ~ $35,000", "\$35,001 ~ $50,000", "\$50,001 ~ $75,000", "\$75,001 ~ $100,000", "\$100,001 ~ $200,000", "More than \$200,000", "Prefer not to answer"],
-                }
+                 "6": ["Yes", "No"],
+                 "7": ["1 (Elementary proficiency)", "2 (Limited working proficiency)", "3 (Professional working proficiency)", "4 (Full professional proficiency)", "5 (Full bilingual proficiency)"]}
 
     for i, (qkey, question) in enumerate(questions.items()):
-        if qkey in select_responses.keys():
+         if qkey == "6":
+            st.write(f"> **{qkey}. {question}**")
+            response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
+
+        elif qkey == "7":
+            if response.get(questions["6"]) == "No":
+                st.write(f"> **{qkey}. {question}**")
+                response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
+            else:
+                response[question] = "N/A"  # Automatically store "N/A" if Q6 is "Yes"
+        
+        elif qkey in select_responses.keys():
             st.write(f"> **{qkey}. {question}**")
             response[question] = st.radio(f"**{question}**", select_responses[qkey], key=f"select_{i}", label_visibility="collapsed", index=None)
 
