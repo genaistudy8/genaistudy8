@@ -194,10 +194,10 @@ def main():
         else:
             st.session_state.prolific_pid = None
             # st.session_state.confidence_condition = random.randint(0, 8)
-        if "CONFIDENCE_CONDITION" in query_params:
-            st.session_state.confidence_condition = int(query_params["CONFIDENCE_CONDITION"])
-        else:
-            st.session_state.confidence_condition = random.randint(0, 8)
+        
+        # HARD-CODE confidence condition here
+        st.session_state.confidence_condition = 8
+
         st.session_state.responses["PROLIFIC_PID"] = st.session_state.prolific_pid
         st.session_state.responses["CONFIDENCE_CONDITION"] = st.session_state.confidence_condition
     # Display debug information
