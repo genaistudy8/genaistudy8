@@ -26,7 +26,7 @@ This study aims to explore your opinions and experiences when interacting with g
 
 ### **2. How many people will participate in the study?**
 
-A total of 1,800 individuals aged 18 or older will take part in this study.
+A total of 900 individuals aged 18 or older will take part in this study.
 
 ### **3. How will the study proceed?**
 
@@ -38,7 +38,7 @@ You can participate from any location where you feel comfortable and able to foc
 
 ### **4. How long will the study take?**
 
-The study will take about 15 to 20 minutes to complete.
+The study will take about 15 minutes to complete.
 
 ### **5. Can I stop participating after the study has begun?**
 
@@ -62,7 +62,7 @@ Our principal investigator, Professor Eun-Ju Lee (+82-2-880-6469) at Seoul Natio
 
 ### **10. How much will participants be paid?**
 
-You will be paid approximately \$2.70 (rate: \$8.00 per hour) for completing the study. 
+You will be paid approximately \$3.00 (rate: \$12.00 per hour) for completing the study. 
 
 ### **11. If I have any questions about the study, whom can I contact?**
 
