@@ -1,3 +1,4 @@
 openpyxl
 pandas
 pydrive
+streamlit==1.44.1
