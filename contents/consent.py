@@ -42,7 +42,7 @@ The study will take about 15 minutes to complete.
 
 ### **5. Can I stop participating after the study has begun?**
 
-Yes, you can stop participating at any time without penalty. If you choose to withdraw, simply stop responding and close the browser window. Your answers will not be saved if you exit the study early. However, please note that you will not receive payment in this case. 
+Yes, you can stop participating at any time without penalty. If you choose to withdraw, simply close the window and return the study on Prolific. Your answers will not be saved if you exit the study early. However, please note that you will not receive payment in this case. 
 
 ### **6. Are there any side effects or risks associated with this study?**
 
@@ -105,7 +105,7 @@ E-mail: irb@snu.ac.kr
         st.session_state["agree"] = True
     if consent == "Disagree":
         st.session_state["agree"] = False 
-        st.warning("You must agree to participate to proceed.")
+        st.warning("Thank you for your time. Please close this page and return the study on Prolific.")
 
 def thanks_page():
     st.title("Thank you!")
