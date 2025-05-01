@@ -237,7 +237,7 @@ The research title presented to you before the study, "User perceptions of gener
 
 The chatbot you interacted with during the study was a simulated program created specifically for this experiment. Please note that all of the chatbot's responses were intentionally false and inaccurate.
 
-You are free to withdraw from this study at any time. If you choose to withdraw, your data will be permanently deleted. If you don't want your responses to be used in the study, please contact us at jwp14812@snu.ac.kr. However, please be aware that in such cases, payment will not be provided.
+You are free to withdraw from this study at any time. If you choose to withdraw, your data will be permanently deleted. If you do not wish for your responses to be used in the study, you may decline to submit your response or contact us at jwp14812@snu.ac.kr. However, please be aware that in such cases, payment will not be provided.
 
 Once again, thank you for your participation. 
     """)
@@ -286,12 +286,12 @@ def closing_page():
     if st.session_state.submission_consent:
         st.write("Thank you for participating in this study.")
         st.write("Please click the link below to return to Prolific and complete your participation.")
-        st.markdown("[https://app.prolific.com/submissions/complete?cc=C12E2UJG](https://app.prolific.com/submissions/complete?cc=C12E2UJG)")
+        st.markdown("[https://app.prolific.com/submissions/complete?cc=C4MGI9PI](https://app.prolific.com/submissions/complete?cc=C4MGI9PI)")
         # st.stop()
     else:
-        st.write("Thank you for participating in this study. Your responses will not be submitted.")
-        st.write("Please click the link below to exit the study.")
-        st.markdown("[https://app.prolific.com/submissions/complete?cc=C1MT56Z4](https://app.prolific.com/submissions/complete?cc=C1MT56Z4)")
+        st.write("Thank you for your time. Your responses will not be submitted.")
+        st.write("Please close this page and return the study on Prolific. You will not be penalized for returning this study.")
+        #st.markdown("[https://app.prolific.com/submissions/complete?cc=C1MT56Z4](https://app.prolific.com/submissions/complete?cc=C1MT56Z4)")
         # st.stop()
 
 def send_results_email(data_df, recipient_email):
